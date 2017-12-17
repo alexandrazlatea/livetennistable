@@ -3,6 +3,8 @@ var express = require('express'),
   port = process.env.PORT || 3000,
   mongoose = require('mongoose'),
   Task = require('./api/models/todoListModel'),
+  User = require('./api/models/userModel'),
+  Tournament = require('./api/models/tournamentModel'),
   bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
