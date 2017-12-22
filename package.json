@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/generalgmt/RESTfulAPITutorial.git"
+    "url": ""
   },
   "keywords": [
     "RESTful",
@@ -19,7 +19,7 @@
   "author": "olatunde garuba",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/generalgmt/RESTfulAPITutorial/issues"
+    "url": "https://github.com/alexandrazlatea/livetennistable"
   },
   "homepage": "https://github.com/generalgmt/RESTfulAPITutorial#readme",
   "devDependencies": {
