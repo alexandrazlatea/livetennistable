@@ -17,7 +17,7 @@ exports.read_user_to_tournament = function(req, res) {
     UserTournament.find({}, function(err, UserTournaments) {
         if (err)
             res.send(err);
-        res.json(UserTournaments);
+        res.json({status:200});
     });
 };
 
