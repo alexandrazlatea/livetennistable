@@ -3,7 +3,7 @@
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-
+var ObjectId = Schema.ObjectId;
 var TournamentSchema = new Schema({
     name: {
         type: String,
@@ -20,28 +20,35 @@ var TournamentSchema = new Schema({
     address: {
         type: String,
     },
-    minimum_number_people: {
+    minimumNumberPeople: {
         type: Number,
     },
-    maximum_number_people: {
+    maximumNumberPeople: {
         type: Number,
     },
-    level: {
-        type: Number
-    },
-    start_date: {
+    startDate: {
         type: Date,
     },
-    end_date: {
+    endDate: {
         type: Date,
     },
-    ticket_price: {
+    ticketPrice: {
         type: Number
     },
-    Created_date: {
+    createdBy: {
+      type:  ObjectId,
+    },
+    isClosed: {
+        type: 'boolean',
+        default: false
+    },
+    createdDate: {
         type: Date,
         default: Date.now
     },
+    level: {
+        type: Number
+    }
 });
 
 

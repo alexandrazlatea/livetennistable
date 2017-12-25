@@ -6,10 +6,10 @@ var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
 var UserTournamentSchema = new Schema({
     userId: {
-        type: ObjectId,
+        type: String,
     },
     tournamentId: {
-        type: ObjectId,
+        type: String,
     },
 
 });
