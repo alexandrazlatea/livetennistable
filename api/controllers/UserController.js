@@ -25,13 +25,10 @@ exports.create_an_user = function(req, res) {
             new_user.save(function(err, user) {
                 if (err)
                     res.send(err)
-
-
                 res.json({status: 200, _id:user.id});
             });
         });
     });
-
 };
 
 exports.read_an_user = function(req, res) {
@@ -57,7 +54,7 @@ exports.delete_an_user = function(req, res) {
     }, function(err, user) {
         if (err)
             res.send(err);
-        res.json({ message: 'USer successfully deleted' });
+        res.json({ message: 'User successfully deleted' });
     });
 };
 
@@ -66,14 +63,14 @@ exports.login = function(req, res) {
         if (err)
             res.send(err);
         if(!user){
-            res.send({status: 'Unknown user'});
+            res.send({status: 210});
         }
         User.comparePassword(req.body.password, user.password, function(err, isMatch){
             if(err) res.send(err);
             if(isMatch){
-                res.json({status: 'success'});
+                res.json({status: 200});
             } else {
-                res.json({status: 'Pasword incorrect'});
+                res.json({status: 210});
             }
         });
     });
