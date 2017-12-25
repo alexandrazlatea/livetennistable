@@ -3,7 +3,6 @@
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var ObjectId = Schema.ObjectId;
 var UserTournamentSchema = new Schema({
     userId: {
         type: String,
@@ -15,4 +14,4 @@ var UserTournamentSchema = new Schema({
 });
 
 
-module.exports = mongoose.model('UserTournament', UserTournamentSchema);
+module.exports = mongoose.model('TournamentsUsers', UserTournamentSchema);

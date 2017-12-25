@@ -27,5 +27,7 @@ module.exports = function(app) {
         .delete(tournamentList.delete_a_tournament);
 
     app.route('/jointournament')
-		.post(userTournament.add_user_to_tournament);
+		.post(userTournament.add_user_to_tournament)
+    app.route('/jointournament')
+        .get(userTournament.read_user_to_tournament);
 };
