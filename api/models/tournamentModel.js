@@ -31,7 +31,12 @@ var TournamentSchema = new Schema({
     },
     start_date: {
         type: Date,
-        default: Date.now
+    },
+    end_date: {
+        type: Date,
+    },
+    ticket_price: {
+        type: Number
     },
     Created_date: {
         type: Date,

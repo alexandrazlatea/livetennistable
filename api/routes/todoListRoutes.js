@@ -1,19 +1,9 @@
 'use strict';
 
 module.exports = function(app) {
-	var todoList = require('../controllers/todoListController');
 	var userList = require('../controllers/UserController');
 	var tournamentList = require('../controllers/TournamentController');
-
-	// todoList Routes
-	app.route('/tasks')
-		.get(todoList.list_all_tasks)
-		.post(todoList.create_a_task);
-
-	app.route('/tasks/:taskId')
-		.get(todoList.read_a_task)
-		.put(todoList.update_a_task)
-		.delete(todoList.delete_a_task);
+	var userTournament = require('../controllers/UserTournamentController');
 
     app.route('/users')
         .get(userList.list_all_users)
@@ -24,6 +14,9 @@ module.exports = function(app) {
         .put(userList.update_an_user)
         .delete(userList.delete_an_user);
 
+    app.route('/login')
+        .post(userList.login);
+
     app.route('/tournaments')
         .get(tournamentList.list_all_tournaments)
         .post(tournamentList.create_a_tournament);
@@ -32,4 +25,7 @@ module.exports = function(app) {
         .get(tournamentList.read_a_tournament)
         .put(tournamentList.update_a_tournament)
         .delete(tournamentList.delete_a_tournament);
+
+    app.route('/jointournament/:userId/tournamentId')
+		.post(userTournament.add_user_to_tournament);
 };
