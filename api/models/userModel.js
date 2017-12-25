@@ -23,7 +23,7 @@ var UserSchema = new Schema({
     email: {
         type: String,
     },
-    phonenumber: {
+    phoneNumber: {
         type: String,
     },
     country: {
@@ -34,11 +34,11 @@ var UserSchema = new Schema({
         type: String,
         Required: 'Kindly enter the name of the user'
     },
-    zipcode: {
+    zipCode: {
         type: String,
         Required: 'Kindly enter the name of the user'
     },
-    Created_date: {
+    CreatedDate: {
         type: Date,
         default: Date.now
     },

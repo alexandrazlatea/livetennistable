@@ -68,7 +68,7 @@ exports.login = function(req, res) {
         User.comparePassword(req.body.password, user.password, function(err, isMatch){
             if(err) res.send(err);
             if(isMatch){
-                res.json({status: 200});
+                res.json({status: 200, _id:user.id, firstName:user.firstName, lastName:user.lastName});
             } else {
                 res.json({status: 210});
             }
