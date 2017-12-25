@@ -9,7 +9,7 @@ exports.list_all_tournaments = function(req, res) {
     Tournament.find({}, function(err, Tournament) {
         if (err)
             res.send(err);
-        res.json(Tournament);
+        res.json({status:200, tournaments: Tournament});
     });
 };
 
@@ -19,7 +19,7 @@ exports.create_a_tournament = function(req, res) {
     new_tournament.save(function(err, tournament) {
         if (err)
             res.send(err);
-        res.json(tournament);
+        res.json({status:200});
     });
 };
 
@@ -27,7 +27,7 @@ exports.read_a_tournament = function(req, res) {
     Tournament.findById(req.params.tournamentId, function(err, tournament) {
         if (err)
             res.send(err);
-        res.json(tournament);
+        res.json({status:200, tournaments: tournament});
     });
 };
 
