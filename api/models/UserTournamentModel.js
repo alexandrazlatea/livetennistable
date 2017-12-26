@@ -22,3 +22,9 @@ module.exports.getUserTournamentsByUserId =  function(userId, tournamentId, call
 
 
 }
+module.exports.getpeopleJoinedTournaments =  function(tournamentId, callback){
+    var query = {tournamentId:tournamentId};
+    TournamentsUsers.find(query).count(function (error, count) {
+        return callback(error, count);
+    });
+}

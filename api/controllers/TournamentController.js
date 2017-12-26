@@ -14,12 +14,14 @@ exports.list_all_tournaments = function(req, res) {
         Tournament.forEach(function(item, index) {
             TournamentsUsers.getUserTournamentsByUserId(userId, item.id, function(err, usertournament){
                 if ((Object.keys(usertournament).length)>0) {
-                    Tournament[index].userIsJoined = true
+                    Tournament[index].userIsJoined = true;
                 }
-                console.log(Tournament.length);
                 if (index === Tournament.length - 1) {
                     exports.functionAfterForEach(req, res, Tournament);
                 }
+            });
+            TournamentsUsers.getpeopleJoinedTournaments(item.id,function(err, countPeople){
+                Tournament[index].peopleJoined = countPeople;
             });
         });
 
@@ -27,6 +29,7 @@ exports.list_all_tournaments = function(req, res) {
 };
 
 exports.functionAfterForEach = function(req, res,Tournament) {
+
     res.json({status:200, tournaments: Tournament});
 }
 

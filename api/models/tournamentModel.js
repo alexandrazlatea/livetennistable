@@ -53,6 +53,11 @@ var TournamentSchema = new Schema({
         type: 'boolean',
         default: false,
     },
+    peopleJoined:{
+        type: Number,
+        default: 0,
+    },
+
 
 });
 
