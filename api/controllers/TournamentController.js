@@ -21,7 +21,7 @@ exports.list_all_tournaments = function(req, res) {
                 }
             });
             TournamentsUsers.getpeopleJoinedTournaments(item.id,function(err, countPeople){
-                Tournament[index].peopleJoined = countPeople;
+                Tournament[index].peoplesJoined = countPeople;
             });
         });
 
