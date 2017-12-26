@@ -48,7 +48,12 @@ var TournamentSchema = new Schema({
     },
     level: {
         type: Number
-    }
+    },
+    userIsJoined:{
+        type: 'boolean',
+        default: false,
+    },
+
 });
 
 

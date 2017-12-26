@@ -1,7 +1,8 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    Tournament = mongoose.model('Tournaments');
+    Tournament = mongoose.model('Tournaments'),
+    TournamentsUsers = mongoose.model('TournamentsUsers');
 
 
 
@@ -9,10 +10,25 @@ exports.list_all_tournaments = function(req, res) {
     Tournament.find({}, function(err, Tournament) {
         if (err)
             res.send(err);
-        res.json({status:200, tournaments: Tournament});
+        var userId = req.params.userId;
+        Tournament.forEach(function(item, index) {
+            TournamentsUsers.getUserTournamentsByUserId(userId, item.id, function(err, usertournament){
+                if ((Object.keys(usertournament).length)>0) {
+                    Tournament[index].userIsJoined = true
+                }
+                console.log(Tournament.length);
+                if (index === Tournament.length - 1) {
+                    exports.functionAfterForEach(req, res, Tournament);
+                }
+            });
+        });
+
     });
 };
 
+exports.functionAfterForEach = function(req, res,Tournament) {
+    res.json({status:200, tournaments: Tournament});
+}
 
 exports.create_a_tournament = function(req, res) {
     var new_tournament = new Tournament(req.body);
