@@ -9,7 +9,7 @@ exports.add_user_to_tournament = function(req, res) {
     new_user_tournament.save(function(err, tournament) {
         if (err)
             res.send(err);
-        res.json(tournament);
+        res.json({status:200, tournaments:tournament});
     });
 };
 
