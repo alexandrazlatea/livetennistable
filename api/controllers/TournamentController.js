@@ -16,9 +16,6 @@ exports.list_all_tournaments = function(req, res) {
                 if ((Object.keys(usertournament).length)>0) {
                     Tournament[index].userIsJoined = true;
                 }
-                if (index === Tournament.length - 1) {
-                    exports.functionAfterForEach(req, res, Tournament);
-                }
             });
             TournamentsUsers.getpeopleJoinedTournaments(item.id,function(err, countPeople){
                 Tournament[index].peoplesJoined = countPeople;
