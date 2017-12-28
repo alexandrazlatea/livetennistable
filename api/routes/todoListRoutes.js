@@ -4,6 +4,7 @@ module.exports = function(app) {
 	var userList = require('../controllers/UserController');
 	var tournamentList = require('../controllers/TournamentController');
 	var userTournament = require('../controllers/UserTournamentController');
+	var myTournaments = require('../controllers/UserTournamentController');
 
     app.route('/users')
         .get(userList.list_all_users)
@@ -33,4 +34,6 @@ module.exports = function(app) {
         .get(userTournament.read_user_to_tournament);
     app.route('/leavetournament/:tournamentId/:userId')
         .get(userTournament.leave_user_from_tournament);
+    app.route('/mytournaments/:userId')
+        .get(myTournaments.get_my_tournaments);
 };

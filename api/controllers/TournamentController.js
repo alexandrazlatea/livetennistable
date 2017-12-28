@@ -23,6 +23,9 @@ exports.list_all_tournaments = function(req, res) {
             TournamentsUsers.getpeopleJoinedTournaments(item.id,function(err, countPeople){
                 Tournament[index].peoplesJoined = countPeople;
             });
+            if (index === Tournament.length - 1) {
+                exports.functionAfterForEach(req, res, Tournament);
+            }
         });
 
     });
