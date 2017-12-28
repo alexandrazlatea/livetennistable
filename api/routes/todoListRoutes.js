@@ -34,6 +34,8 @@ module.exports = function(app) {
         .get(userTournament.read_user_to_tournament);
     app.route('/leavetournament/:tournamentId/:userId')
         .get(userTournament.leave_user_from_tournament);
-    app.route('/mytournaments/:userId')
-        .get(myTournaments.get_my_tournaments);
+   /* app.route('/mytournaments/:userId')
+        .get(myTournaments.get_my_tournaments);*/
+    app.route('/getparticipants/:tournamentId')
+        .get(userTournament.get_participants);
 };

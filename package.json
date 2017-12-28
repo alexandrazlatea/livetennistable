@@ -29,6 +29,7 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "mongoose": "^4.10.8",
-    "nodemailer": "^4.4.1"
+    "nodemailer": "^4.4.1",
+    "mongo-join": "^1.0.0"
   }
 }
