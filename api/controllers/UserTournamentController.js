@@ -22,7 +22,6 @@ exports.read_user_to_tournament = function(req, res) {
 };
 
 exports.leave_user_from_tournament = function(req, res) {
-    console.log('intra aici');
     var query = {tournamentId: req.params.tournamentId, userId: req.params.userId};
     UserTournament.deleteOne({
         tournamentId: req.params.tournamentId, userId: req.params.userId
