@@ -31,4 +31,6 @@ module.exports = function(app) {
 		.post(userTournament.add_user_to_tournament)
     app.route('/jointournament')
         .get(userTournament.read_user_to_tournament);
+    app.route('/leavetournament/:tournamentId/:userId')
+        .get(userTournament.leave_user_from_tournament);
 };

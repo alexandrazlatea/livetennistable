@@ -21,3 +21,12 @@ exports.read_user_to_tournament = function(req, res) {
     });
 };
 
+exports.leave_user_from_tournament = function(req, res) {
+    var query = { userId: req.params.userId, tournamentId: req.params.tournamentId};
+    UserTournament.deleteOne(query), function(err, userTournament) {
+        if (err)
+            res.send(err);
+        res.json({ status:200, message: 'User successfully deleted' });
+    };
+};
+
