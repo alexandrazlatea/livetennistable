@@ -44,9 +44,16 @@ exports.create_a_tournament = function(req, res) {
 
 exports.read_a_tournament = function(req, res) {
     Tournament.findById(req.params.tournamentId, function(err, tournament) {
+
         if (err)
             res.send(err);
-        res.json({status:200, tournaments: tournament});
+        TournamentsUsers.getUserTournamentsByUserId(req.params.userId, req.params.tournamentId, function(err, usertournament){
+            if ((Object.keys(usertournament).length)>0) {
+                tournament.userIsJoined = true;
+            }
+            res.json({status:200, tournaments: tournament});
+
+        });
     });
 };
 

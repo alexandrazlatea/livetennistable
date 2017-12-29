@@ -14,7 +14,7 @@ exports.add_user_to_tournament = function(req, res) {
 };
 
 exports.read_user_to_tournament = function(req, res) {
-    UserTournament.find({}, function(err, UserTournaments) {
+    UserTournament.find({tournamentId: req.params.tournamentId, userId: req.params.userId}, function(err, UserTournaments) {
         if (err)
             res.send(err);
         res.json({status:200});
