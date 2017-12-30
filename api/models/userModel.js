@@ -34,7 +34,7 @@ var UserSchema = new Schema({
         type: String,
         Required: 'Kindly enter the name of the user'
     },
-    zipCode: {
+    address: {
         type: String,
         Required: 'Kindly enter the name of the user'
     },
