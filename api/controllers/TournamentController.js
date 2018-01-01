@@ -25,7 +25,6 @@ exports.list_all_tournaments_based_on_userId = function(req, res) {
             });
 
         });
-
     });
 };
 
@@ -76,11 +75,11 @@ exports.update_a_tournament = function(req, res) {
 // Tournament.remove({}).exec(function(){});
 exports.delete_a_tournament = function(req, res) {
 
-    Tournament.remove({
-        _id: req.params.TournamentId
-    }, function(err, tournament) {
-        if (err)
-            res.send(err);
-        res.json({ message: 'tournament successfully deleted' });
-    });
+    Tournament.deleteOne({
+        _id: req.params.tournamentId
+    })
+        .then(function(result) {
+            res.json({status:200});
+        })
+
 };

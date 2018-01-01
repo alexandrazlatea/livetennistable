@@ -34,11 +34,12 @@ module.exports = function(app) {
     app.route('/tournaments')
         .post(tournamentList.create_a_tournament);
     app.route('/tournaments/:tournamentId')
-        .put(tournamentList.update_a_tournament);
+        .put(tournamentList.update_a_tournament)
+        .delete(tournamentList.delete_a_tournament);
+
 
     app.route('/tournaments/:tournamentId/:userId')
         .get(tournamentList.read_a_tournament)
-        .delete(tournamentList.delete_a_tournament);
 
     app.route('/jointournament')
         .post(userTournament.add_user_to_tournament)
