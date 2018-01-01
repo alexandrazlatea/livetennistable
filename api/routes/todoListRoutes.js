@@ -27,6 +27,9 @@ module.exports = function(app) {
         .post(userList.login);
 
     app.route('/tournaments/:userId')
+        .get(tournamentList.list_all_tournaments_based_on_userId)
+
+    app.route('/tournaments')
         .get(tournamentList.list_all_tournaments)
     app.route('/tournaments')
         .post(tournamentList.create_a_tournament);

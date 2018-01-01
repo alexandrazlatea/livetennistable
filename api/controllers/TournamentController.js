@@ -6,7 +6,7 @@ var mongoose = require('mongoose'),
 
 
 
-exports.list_all_tournaments = function(req, res) {
+exports.list_all_tournaments_based_on_userId = function(req, res) {
     Tournament.find({}, function(err, Tournament) {
         if (err)
             res.send(err);
@@ -26,6 +26,14 @@ exports.list_all_tournaments = function(req, res) {
 
         });
 
+    });
+};
+
+exports.list_all_tournaments = function(req, res) {
+    Tournament.find({}, function(err, Tournament) {
+        if (err)
+            res.send(err);
+        res.json({status:200, tournaments: Tournament});
     });
 };
 
