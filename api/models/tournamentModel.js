@@ -20,6 +20,9 @@ var TournamentSchema = new Schema({
     address: {
         type: String,
     },
+    description: {
+      type:String,
+    },
     minimumNumberPeople: {
         type: Number,
     },
@@ -33,7 +36,7 @@ var TournamentSchema = new Schema({
         type: Date,
     },
     ticketPrice: {
-        type: Number
+        type: String
     },
     createdBy: {
       type:  ObjectId,

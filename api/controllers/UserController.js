@@ -75,3 +75,7 @@ exports.login = function(req, res) {
         });
     });
 };
+
+exports.update_password = function(req, res) {
+
+};
