@@ -101,7 +101,7 @@ exports.forgot_password = function(req, res) {
                     from: 'zlatea.alexandra@gmail.com',
                     to: user.email,
                     subject: 'Reset password',
-                    text: 'That was easy!'
+                    text: 'We have sent you this email in response to your request to reset your password on Live Table Tennis. <br> We recommend that you keep your password and not share it with anyone. <br>Your new password id '+ new_password
                 };
 
                 transporter.sendMail(mailOptions, function(error, info){
