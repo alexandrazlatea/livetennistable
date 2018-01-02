@@ -11,20 +11,22 @@ exports.list_all_tournaments_based_on_userId = function(req, res) {
         if (err)
             res.send(err);
         var userId = req.params.userId;
-        Tournament.forEach(function(item, index) {
-            TournamentsUsers.getUserTournamentsByUserId(userId, item.id, function(err, usertournament){
-                if ((Object.keys(usertournament).length)>0) {
-                    Tournament[index].userIsJoined = true;
-                }
-                TournamentsUsers.getpeopleJoinedTournaments(item.id,function(err, countPeople){
-                    Tournament[index].peoplesJoined = countPeople;
+        if (Tournament) {
+            Tournament.forEach(function (item, index) {
+                TournamentsUsers.getUserTournamentsByUserId(userId, item.id, function (err, usertournament) {
+                    if ((Object.keys(usertournament).length) > 0) {
+                        Tournament[index].userIsJoined = true;
+                    }
+                    TournamentsUsers.getpeopleJoinedTournaments(item.id, function (err, countPeople) {
+                        Tournament[index].peoplesJoined = countPeople;
+                    });
+                    if (index === Tournament.length - 1) {
+                        exports.functionAfterForEach(req, res, Tournament);
+                    }
                 });
-                if (index === Tournament.length - 1) {
-                    exports.functionAfterForEach(req, res, Tournament);
-                }
-            });
 
-        });
+            });
+        }
     });
 };
 

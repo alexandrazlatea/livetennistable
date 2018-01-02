@@ -49,7 +49,6 @@ exports.update_an_user = function(req, res) {
 };
 // User.remove({}).exec(function(){});
 exports.delete_an_user = function(req, res) {
-
     User.deleteOne({
         _id: req.params.UserId
     }, function(err, user) {

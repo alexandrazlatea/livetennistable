@@ -26,9 +26,9 @@ exports.leave_user_from_tournament = function(req, res) {
     UserTournament.deleteOne({
         tournamentId: req.params.tournamentId, userId: req.params.userId
     })
-        .then(function(result) {
-            res.json({status:200});
-        })
+    .then(function(result) {
+        res.json({status:200});
+    })
 }
 
 exports.get_participants = function(req, res) {
