@@ -34,7 +34,6 @@ module.exports.getpeopleJoinedTournament =  function(tournamentId, callback) {
     console.log(tournamentId);
     var query = {tournamentId: tournamentId};
      TournamentsUsers.find(query, function(err, result) {
-        console.log(result);
          result.forEach(function (tournament, index) {
              Users.find({userId: tournament.userId}, function(error, user){
                  console.log(user);

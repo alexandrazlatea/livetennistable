@@ -16,12 +16,7 @@ module.exports = function(app) {
         .delete(userList.delete_an_user);
 
     app.route('/user/forgot-password')
-        .post(userList.update_password);
-
-    app.route('user')
-
-    app.route('/user')
-        .post(userList.update_password);
+        .post(userList.forgot_password);
 
     app.route('/login')
         .post(userList.login);

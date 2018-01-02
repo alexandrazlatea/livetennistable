@@ -6,6 +6,7 @@ var mongoose = require('mongoose'),
     User = mongoose.model('Users')
 var bcrypt = require('bcryptjs');
 
+var nodemailer = require('nodemailer');
 
 
 exports.list_all_users = function(req, res) {
@@ -76,6 +77,44 @@ exports.login = function(req, res) {
     });
 };
 
-exports.update_password = function(req, res) {
+exports.forgot_password = function(req, res) {
+    User.getUserByUsername(req.body.username, function(err, user) {
+        if (err)
+            res.send(err);
+        if(!user){
+            res.send({status: 210});
+        } else {
+
+            var transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                    user: 'zlatea.alexandra@gmail.com',
+                    pass: 'mlacif12'
+                }
+            });
+            var new_password = Math.random().toString(36).slice(-8);
+            user.password = new_password;
+            User.findOneAndUpdate({_id:user.id}, user, {new: true}, function(err, user) {
+                if (err)
+                    res.send(err);
+                var mailOptions = {
+                    from: 'zlatea.alexandra@gmail.com',
+                    to: user.email,
+                    subject: 'Reset password',
+                    text: 'That was easy!'
+                };
+
+                transporter.sendMail(mailOptions, function(error, info){
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        res.json({status:200});
+
+                    }
+                });
+            });
+        }
+
+    });
 
 };
