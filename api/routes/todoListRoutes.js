@@ -5,6 +5,7 @@ module.exports = function(app) {
 	var tournamentList = require('../controllers/TournamentController');
 	var userTournament = require('../controllers/UserTournamentController');
 	var myTournaments = require('../controllers/UserTournamentController');
+	var scores = require('../controllers/ScoresController');
 
     app.route('/users')
         .get(userList.list_all_users)
@@ -32,18 +33,29 @@ module.exports = function(app) {
         .put(tournamentList.update_a_tournament)
         .delete(tournamentList.delete_a_tournament);
 
-
     app.route('/tournaments/:tournamentId/:userId')
         .get(tournamentList.read_a_tournament)
 
     app.route('/jointournament')
         .post(userTournament.add_user_to_tournament)
+
     app.route('/jointournament')
         .get(userTournament.read_user_to_tournament);
+
     app.route('/leavetournament/:tournamentId/:userId')
         .get(userTournament.leave_user_from_tournament);
     /* app.route('/mytournaments/:userId')
          .get(myTournaments.get_my_tournaments);*/
     app.route('/getparticipants/:tournamentId')
         .get(userTournament.get_participants);
+
+    app.route('/scores/')
+        .post(scores.add_a_score);
+
+    app.route('/scores/:scorId')
+        .post(scores.update_a_score);
+
+    app.route('/scores/:userId')
+        .get(scores.get_all_tournaments);
+
 };
