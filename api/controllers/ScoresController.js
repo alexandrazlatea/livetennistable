@@ -26,11 +26,7 @@ exports.read_an_user = function(req, res) {
 };
 
 exports.update_a_scor = function(req, res) {
-    User.findOneAndUpdate({_id:req.params.scorId}, req.body, {new: true}, function(err, scor) {
-        if (err)
-            res.send(err);
-        res.json({status:200, scor:scor});
-    });
+
 };
 // User.remove({}).exec(function(){});
 exports.delete_an_user = function(req, res) {

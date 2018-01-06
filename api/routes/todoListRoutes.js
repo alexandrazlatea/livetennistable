@@ -50,12 +50,9 @@ module.exports = function(app) {
         .get(userTournament.get_participants);
 
     app.route('/scores/')
-        .post(scores.add_a_score);
+        .post(scores.add_a_score)
 
     app.route('/scores/:scorId')
-        .post(scores.update_a_score);
-
-    app.route('/scores/:userId')
-        .get(scores.get_all_tournaments);
+        .post(scores.update_a_scor)
 
 };
