@@ -43,7 +43,4 @@ module.exports.getpeopleJoinedTournament =  function(tournamentId, callback) {
 
 
         });
-
-     });
-
 }
