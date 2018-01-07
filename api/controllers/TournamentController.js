@@ -34,7 +34,17 @@ exports.list_all_tournaments = function(req, res) {
     Tournament.find({}, function(err, Tournament) {
         if (err)
             res.send(err);
-        res.json({status:200, tournaments: Tournament});
+        if (Tournament) {
+            Tournament.forEach(function (item, index) {
+                    TournamentsUsers.getpeopleJoinedTournaments(item.id, function (err, countPeople) {
+                        Tournament[index].peoplesJoined = countPeople;
+                        if (index === Tournament.length - 1) {
+                            exports.functionAfterForEach(req, res, Tournament);
+                        }
+                    });
+
+            });
+        }
     });
 };
 
@@ -61,7 +71,12 @@ exports.read_a_tournament = function(req, res) {
             if ((Object.keys(usertournament).length)>0) {
                 tournament.userIsJoined = true;
             }
-            res.json({status:200, tournaments: tournament});
+            TournamentsUsers.getpeopleJoinedTournaments(req.params.tournamentId, function (err, countPeople) {
+                tournament[index].peoplesJoined = countPeople;
+                res.json({status:200, tournaments: tournament});
+
+            });
+
 
         });
     });
