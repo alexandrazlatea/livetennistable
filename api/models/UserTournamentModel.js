@@ -26,13 +26,14 @@ module.exports.getUserTournamentsByUserId =  function(userId, tournamentId, call
 module.exports.getpeopleJoinedTournaments =  function(tournamentId, callback){
     var query = {tournamentId:tournamentId};
     TournamentsUsers.find(query).count(function (error, count) {
+        console.log(count);
         return callback(error, count);
     });
 }
 
 module.exports.getpeopleJoinedTournament =  function(tournamentId, callback) {
     var query = {tournamentId: tournamentId};
-    var usersName = {};
+    var usersName = [];
      TournamentsUsers.find(query, function(err, result) {
          result.forEach(function (tournament, index) {
              Users.findById(tournament.userId, function(error, user){
@@ -45,8 +46,6 @@ module.exports.getpeopleJoinedTournament =  function(tournamentId, callback) {
                      return callback(usersName);
                  }
             })
-
-
         });
 
      });
