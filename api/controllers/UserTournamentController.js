@@ -32,6 +32,9 @@ exports.leave_user_from_tournament = function(req, res) {
 }
 
 exports.get_participants = function(req, res) {
-    UserTournament.getpeopleJoinedTournament(req.params.tournamentId);
+    UserTournament.getpeopleJoinedTournament(req.params.tournamentId, function(users){
+        res.send({status:200, users:users});
+    });
+
 };
 

@@ -31,14 +31,19 @@ module.exports.getpeopleJoinedTournaments =  function(tournamentId, callback){
 }
 
 module.exports.getpeopleJoinedTournament =  function(tournamentId, callback) {
-    console.log(tournamentId);
     var query = {tournamentId: tournamentId};
+    var usersName = {};
      TournamentsUsers.find(query, function(err, result) {
          result.forEach(function (tournament, index) {
-             Users.find({userId: tournament.userId}, function(error, user){
-                 console.log(user);
-                console.log(user.username);
+                 usersName[user.id] = user.username;
+                 if (index === result.length -1) {
+                     return callback(usersName);
+                 }
             })
-        });    });
+
+
+        });
+
+     });
 
 }
