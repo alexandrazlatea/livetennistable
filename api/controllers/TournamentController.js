@@ -72,7 +72,7 @@ exports.read_a_tournament = function(req, res) {
                 tournament.userIsJoined = true;
             }
             TournamentsUsers.getpeopleJoinedTournaments(req.params.tournamentId, function (err, countPeople) {
-                tournament[index].peoplesJoined = countPeople;
+                tournament.peoplesJoined = countPeople;
                 res.json({status:200, tournaments: tournament});
 
             });
