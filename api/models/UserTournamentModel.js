@@ -34,18 +34,22 @@ module.exports.getpeopleJoinedTournament =  function(tournamentId, callback) {
     var query = {tournamentId: tournamentId};
     var usersName = [];
      TournamentsUsers.find(query, function(err, result) {
-         result.forEach(function (tournament, index) {
-             Users.findById(tournament.userId, function(error, user){
-                 var users = {};
-                 users._id = user.id;
-                 users.firstName = user.firstName;
-                 users.lastName = user.lastName;
-                 usersName[index] = users;
-                 if (index === result.length -1) {
-                     return callback(usersName);
-                 }
-            })
-        });
+         if (result) {
+             result.forEach(function (tournament, index) {
+                 Users.findById(tournament.userId, function (error, user) {
+                     var users = {};
+                     users._id = user.id;
+                     users.firstName = user.firstName;
+                     users.lastName = user.lastName;
+                     usersName[index] = users;
+                     if (index === result.length - 1) {
+                         return callback(usersName);
+                     }
+                 })
+             });
+         }else {
+             return callback();
+         }
 
      });
 

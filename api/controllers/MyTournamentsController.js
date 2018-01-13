@@ -12,17 +12,21 @@ exports.get_my_tournaments = function(req, res) {
             res.send(err);
         var userId = req.params.userId;
         var tempArray = [];
-        Tournament.forEach(function(item, index) {
-            TournamentsUsers.getUserTournamentsByUserId(userId, item.id, function(err, usertournament){
+        if (Tournament) {
+            Tournament.forEach(function (item, index) {
+                TournamentsUsers.getUserTournamentsByUserId(userId, item.id, function (err, usertournament) {
 
-                if ((Object.keys(usertournament).length) > 0) {
-                    tempArray.push(Tournament[index]);
-                }
-                if (index === Tournament.length - 1) {
-                    exports.functionAfterForEach(req, res, tempArray);
-                }
+                    if ((Object.keys(usertournament).length) > 0) {
+                        tempArray.push(Tournament[index]);
+                    }
+                    if (index === Tournament.length - 1) {
+                        exports.functionAfterForEach(req, res, tempArray);
+                    }
+                });
             });
-        });
+        } else {
+            exports.functionAfterForEach(req, res, Tournament);
+        }
 
     }));
 };
@@ -31,4 +35,6 @@ exports.functionAfterForEach = function(req, res,Tournament) {
 
     res.json({status:200, tournaments: Tournament});
 }
+
+//taskkill /F /IM node.exe
 
