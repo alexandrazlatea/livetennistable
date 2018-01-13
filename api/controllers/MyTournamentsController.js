@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
 
 
 exports.get_my_tournaments = function(req, res) {
-    Tournament.find({userId: req.params}, function(err, Tournament) {
+    Tournament.find({userId: req.params}.sort({startDate: -1}, function(err, Tournament) {
         if (err)
             res.send(err);
         var userId = req.params.userId;

@@ -9,11 +9,10 @@ var TournamentSchema = new Schema({
         type: String,
         Required: 'Kindly enter the name of the tournament'
     },
-    country: {
+    latitude: {
         type: String,
-        Required: 'Kindly enter the name of the tournament'
     },
-    city: {
+    longitude: {
         type: String,
         Required: 'Kindly enter the name of the tournament'
     },
