@@ -11,7 +11,7 @@ exports.list_all_tournaments_based_on_userId = function(req, res) {
         if (err)
             res.send(err);
         var userId = req.params.userId;
-        if (Tournament) {
+        if (Tournament.length > 0) {
             Tournament.forEach(function (item, index) {
                 TournamentsUsers.getUserTournamentsByUserId(userId, item.id, function (err, usertournament) {
                     if ((Object.keys(usertournament).length) > 0) {
@@ -34,7 +34,7 @@ exports.list_all_tournaments = function(req, res) {
     Tournament.find({}, function(err, Tournament) {
         if (err)
             res.send(err);
-        if (Tournament) {
+        if (Tournament.length > 0) {
             Tournament.forEach(function (item, index) {
                     TournamentsUsers.getpeopleJoinedTournaments(item.id, function (err, countPeople) {
                         Tournament[index].peoplesJoined = countPeople;
