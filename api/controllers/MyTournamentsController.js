@@ -24,7 +24,7 @@ exports.get_my_tournaments = function(req, res) {
             });
         });
 
-    });
+    }));
 };
 
 exports.functionAfterForEach = function(req, res,Tournament) {
