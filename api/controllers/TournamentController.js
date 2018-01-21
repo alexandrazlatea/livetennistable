@@ -19,10 +19,11 @@ exports.list_all_tournaments_based_on_userId = function(req, res) {
                     }
                     TournamentsUsers.getpeopleJoinedTournaments(item.id, function (err, countPeople) {
                         Tournament[index].peoplesJoined = countPeople;
+                        if (index === Tournament.length - 1) {
+                            exports.functionAfterForEach(req, res, Tournament);
+                        }
                     });
-                    if (index === Tournament.length - 1) {
-                        exports.functionAfterForEach(req, res, Tournament);
-                    }
+
                 });
 
             });
@@ -31,16 +32,18 @@ exports.list_all_tournaments_based_on_userId = function(req, res) {
 };
 
 exports.list_all_tournaments = function(req, res) {
+    var counter = 0;
     Tournament.find({}, function(err, Tournament) {
         if (err)
             res.send(err);
         if (Tournament.length > 0) {
             Tournament.forEach(function (item, index) {
                     TournamentsUsers.getpeopleJoinedTournaments(item.id, function (err, countPeople) {
-                        Tournament[index].peoplesJoined = countPeople;
-                        if (index === Tournament.length - 1) {
+                        Tournament[counter].peoplesJoined = countPeople;
+                        if (counter === Tournament.length - 1) {
                             exports.functionAfterForEach(req, res, Tournament);
                         }
+                        counter++;
                     });
 
             });
@@ -73,9 +76,12 @@ exports.read_a_tournament = function(req, res) {
             }
             TournamentsUsers.getpeopleJoinedTournaments(req.params.tournamentId, function (err, countPeople) {
                 tournament.peoplesJoined = countPeople;
-                res.json({status:200, tournaments: tournament});
+                if (index === tournament.length - 1) {
+                    exports.functionAfterForEach(req, res, tournament);
+                }
 
             });
+
 
 
         });
